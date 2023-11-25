@@ -31,7 +31,7 @@ def PrintBoard(b):
         line = ''
         for col in range(3):
             line += human_readable[b[3 * row + col]]
-        print line
+        print(line)
 
 state_successors = []
 state_groups = []
@@ -62,8 +62,8 @@ for index in range(19683):
         state_groups.append(-1)
         unclassified_states.add(index)
 while unclassified_states:
-    print 'unclassified states:', len(unclassified_states)
-    print 'groups:', len(group_successors)
+    print('unclassified states:', len(unclassified_states))
+    print('groups:', len(group_successors))
     leftovers = []
     for index in unclassified_states:
         gs = set(state_groups[s] for s in state_successors[index])
@@ -77,10 +77,10 @@ while unclassified_states:
         state_groups[index] = group_id
         group_states[group_id].add(index)
     unclassified_states = leftovers
-print 'groups:', len(group_successors)
-for i, (states, successors) in enumerate(zip(group_states, group_successors)):
-    print i, len(states), successors
-    for s in states:
-        break
-    b = Deindex(s)
-    PrintBoard(b)
+print('groups:', len(group_successors))
+# for i, (states, successors) in enumerate(zip(group_states, group_successors)):
+#     print(i, len(states), successors)
+#     for s in states:
+#         break
+#     b = Deindex(s)
+#     PrintBoard(b)
